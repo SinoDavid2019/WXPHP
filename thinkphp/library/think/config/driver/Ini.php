@@ -9,6 +9,16 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 
-use think\Route;
+namespace think\config\driver;
 
-Route::rule('hello','sample/Test/hello');
+class Ini
+{
+    public function parse($config)
+    {
+        if (is_file($config)) {
+            return parse_ini_file($config, true);
+        } else {
+            return parse_ini_string($config, true);
+        }
+    }
+}

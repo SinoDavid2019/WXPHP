@@ -9,6 +9,16 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 
-use think\Route;
+namespace think\config\driver;
 
-Route::rule('hello','sample/Test/hello');
+class Json
+{
+    public function parse($config)
+    {
+        if (is_file($config)) {
+            $config = file_get_contents($config);
+        }
+        $result = json_decode($config, true);
+        return $result;
+    }
+}

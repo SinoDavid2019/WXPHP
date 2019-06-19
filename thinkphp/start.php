@@ -9,6 +9,11 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 
-use think\Route;
+namespace think;
 
-Route::rule('hello','sample/Test/hello');
+// ThinkPHP 引导文件
+// 1. 加载基础文件
+require __DIR__ . '/base.php';
+
+// 2. 执行应用
+App::run()->send();
