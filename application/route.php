@@ -11,4 +11,4 @@
 
 use think\Route;
 
-Route::rule('hello','sample/Test/hello');
+Route::rule('hello/:id','sample/Test/hello');
