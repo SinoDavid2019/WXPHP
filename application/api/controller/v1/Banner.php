@@ -9,8 +9,10 @@
 namespace app\api\controller\v1;
 
 
-use app\api\validate\TestValidate;
-use think\Validate;
+use app\api\validate\IDMustBePositiveInt;
+use \app\api\model\Banner as BannerModel;
+use app\lib\exception\BannerMissException;
+use think\Exception;
 
 class Banner
 {
@@ -23,27 +25,11 @@ class Banner
      */
     public function  getBanner($id){
 
-        //独立验证
-        $data=[
-          'name'=>'',
-          'email'=>'vendor@qqcom'
-        ];
-
-//        $validate=new Validate([
-//            'name'=>'require|max:10',
-//            'email'=>'email'
-//        ]);
-        $validate=new TestValidate();
-
-
-        $result=$validate->batch()->check($data);
-
-        halt($validate->getError());
-
-        //验证器
-
-
-
+       (new IDMustBePositiveInt())->goCheck();
+        $banner=BannerModel::getBannerByID($id);
+        if(!$banner){
+            throw new BannerMissException();
+        }
 
     }
 
