@@ -23,9 +23,9 @@ class BaseValidate extends Validate
 
         if(!$result){
             $exception=new ParameterException([
-                'message'=>$this->error
+                'message'=> is_array($this->error) ? implode(
+                    ';', $this->error) : $this->error
             ]);
-
             throw $exception;
         }else{
             return true;

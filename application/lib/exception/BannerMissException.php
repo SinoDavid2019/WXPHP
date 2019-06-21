@@ -8,7 +8,11 @@
 
 namespace app\lib\exception;
 
-
+/**
+ * 请求内容不存在异常处理
+ * Class BannerMissException
+ * @package app\lib\exception
+ */
 class BannerMissException extends BaseException
 {
 

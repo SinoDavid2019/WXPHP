@@ -9,11 +9,16 @@
 namespace app\lib\exception;
 
 
-use Exception;
+
 use think\exception\Handle;
 use think\Log;
 use think\Request;
 
+/**
+ * 重写Handler rander方法 实现自定义异常
+ * Class ExceptionHandler
+ * @package app\lib\exception
+ */
 class ExceptionHandler extends Handle
 {
     private $httpCode;
@@ -27,8 +32,9 @@ class ExceptionHandler extends Handle
      * @param Exception $e
      * @return \think\Response|\think\response\Json
      */
-    public function render(Exception $e)
+    public function render(\Exception $e)
     {
+
         if($e instanceof BaseException){
             $this->code=$e->code;
             $this->httpCode=$e->httpCode;
@@ -60,7 +66,11 @@ class ExceptionHandler extends Handle
         return json($result,$this->httpCode);
     }
 
-    private function recordErrorLog(Exception $exception){
+    /**
+     * 将Error级别的错误写入日志
+     * @param Exception $exception
+     */
+    private function recordErrorLog(\Exception $exception){
         Log::init([
             'type'  => 'File',
             'path'  => LOG_PATH,
