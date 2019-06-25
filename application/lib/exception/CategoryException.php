@@ -11,10 +11,10 @@ namespace app\lib\exception;
 
 class CategoryException extends BaseException
 {
-    protected $httpCode=404;
+    public $httpCode=404;
 
-    protected $message='未查询到自定的类目数据，请检查参数';
+    public $message='未查询到自定的类目数据，请检查参数';
 
-    protected $code=50000;
+    public $code=50000;
 
 }

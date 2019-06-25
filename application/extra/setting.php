@@ -7,5 +7,6 @@
  */
 
 return [
-    'img_prefix'=>'http://www.wx.com/images'
+    'img_prefix'=>'http://www.wx.com/images',
+    'token_expire_in'=>7200
 ];

@@ -19,4 +19,8 @@ Route::get('api/:version/theme/:id','api/:version.theme/getComplexOne');
 
 Route::get('api/:version/product/recent','api/:version.product/getRecent');
 
+Route::get('api/:version/product/by_category/:id','api/:version.product/getAllInCategory');
+
 Route::get('api/:version/category/all','api/:version.category/getAllCategories');
+
+Route::post('api/:version/token/user','api/:version.token/getToken');

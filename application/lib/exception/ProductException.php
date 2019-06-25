@@ -11,11 +11,10 @@ namespace app\lib\exception;
 
 class ProductException extends BaseException
 {
-    protected $httpCode=404;
+    public $httpCode=404;
 
+    public $message='未找到查询的商品信息';
 
-    protected $message='未找到查询的商品信息';
-
-    protected $code=20000;
+    public $code=20000;
 
 }
