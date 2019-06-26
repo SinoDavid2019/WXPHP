@@ -15,7 +15,7 @@ class Category
 {
     public function getAllCategories(){
 
-        $result=CategoryModel::with('img')->select();
+        $result=CategoryModel::all([],'img');
         if($result->isEmpty()){
             throw new CategoryException();
         }
