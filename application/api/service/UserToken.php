@@ -32,6 +32,7 @@ class UserToken extends Token
 
     public function get()
     {
+
         $result = curl_get($this->loginUrl);
         $wxResult = json_decode($result, true);
         if (empty($wxResult)) {
