@@ -16,6 +16,7 @@ use app\lib\exception\UserException;
 use app\api\model\Order as OrderModel;
 
 use app\api\model\OrderProduct as OrderProductModel;
+use think\Db;
 
 class Order
 {
@@ -54,6 +55,7 @@ class Order
      * @throws \Exception
      */
     private function createOrder($snap){
+        Db::startTrans();//开启数据库事务
 
        try{
 
@@ -83,6 +85,8 @@ class Order
 
            $orderProduct->saveAll($this->oProducts);
 
+           Db::commit();//提交数据库事务
+
            return [
                'order_no' => $orderNo,
                'order_id' => $orderID,
@@ -90,6 +94,8 @@ class Order
            ];
 
        }catch (\Exception $exception){
+
+           Db::rollback();//如出现异常，回滚事务
            throw $exception;
        }
 
