@@ -9,6 +9,7 @@
 namespace app\api\service;
 
 
+use app\api\model\OrderProduct;
 use app\api\model\Product;
 use app\api\model\UserAddress;
 use app\lib\exception\OrderException;
@@ -113,6 +114,23 @@ class Order
                 'd') . substr(time(), -5) . substr(microtime(), 2, 5) . sprintf(
                 '%02d', rand(0, 99));
         return $orderSn;
+    }
+
+    /**
+     * 检测订单库存量
+     */
+    public function checkOrderStock($orderID){
+
+        $oProducts=OrderProduct::where('order_id','=',$orderID)->select();
+
+        $this->oProducts=$oProducts;
+
+        $this->products=$this->getProductsByOrder($oProducts);
+
+        $status=$this->getOrderStatus();
+
+        return $status;
+
     }
 
     /**
