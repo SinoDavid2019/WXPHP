@@ -118,6 +118,11 @@ class Order
 
     /**
      * 检测订单库存量
+     * @param $orderID
+     * @return array
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
      */
     public function checkOrderStock($orderID){
 
