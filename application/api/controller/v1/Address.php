@@ -16,6 +16,11 @@ use app\api\validate\AddressNew;
 use app\lib\exception\SuccessMessage;
 use app\lib\exception\UserException;
 
+/**
+ * 用户收获地址控制器
+ * Class Address
+ * @package app\api\controller\v1
+ */
 class Address extends BaseController
 {
 

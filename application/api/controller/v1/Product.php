@@ -14,6 +14,11 @@ use app\api\model\Product as ProductModel;
 use app\api\validate\IDMustBePositiveInt;
 use app\lib\exception\ProductException;
 
+/**
+ * 产品类控制器
+ * Class Product
+ * @package app\api\controller\v1
+ */
 class Product
 {
 

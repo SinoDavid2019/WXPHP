@@ -12,6 +12,11 @@ use app\api\model\Theme as ThemeModel;
 use app\api\validate\IDMustBePositiveInt;
 use app\lib\exception\ThemeException;
 
+/**
+ * 专题类控制器
+ * Class Theme
+ * @package app\api\controller\v1
+ */
 class Theme
 {
 

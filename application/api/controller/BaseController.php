@@ -15,15 +15,27 @@ use app\api\service\Token as TokenService;
 class BaseController extends  Controller
 {
 
+    /**
+     * User级别权限
+     * @throws \app\lib\exception\TokenException
+     */
     protected function checkPrimaryScope(){
         TokenService::needPrimaryScope();
     }
 
+    /**
+     * 用户专有权限
+     * @throws \app\lib\exception\TokenException
+     */
     protected function checkExclusiveScope(){
         TokenService::needExclusiveScope();
     }
 
 
+    /**
+     * Super级别权限
+     * @throws \app\lib\exception\TokenException
+     */
     protected function checkSuperScope(){
         TokenService::needSuperScope();
     }

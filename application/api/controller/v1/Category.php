@@ -10,7 +10,11 @@ namespace app\api\controller\v1;
 use app\api\model\Category as CategoryModel;
 use app\lib\exception\CategoryException;
 
-
+/**
+ * 商品类目控制器
+ * Class Category
+ * @package app\api\controller\v1
+ */
 class Category
 {
     public function getAllCategories(){

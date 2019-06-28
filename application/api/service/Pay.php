@@ -17,7 +17,7 @@ use \app\api\model\Order as OrderModel;
 use think\Loader;
 use think\Log;
 
-Loader::import('WxPay.WxPay',EXTEND_PATH,'.Api.php');
+Loader::import('WxPay.WxPay',EXTEND_PATH,'.Api.php');//引用第三方API
 
 class Pay
 {
