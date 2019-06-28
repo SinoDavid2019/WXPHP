@@ -85,7 +85,37 @@ class Pay
         }
         $this->recordPreOrder($wxOrder);
 
-        return null;
+        $signature=$this->sign($wxOrder);
+
+        return $signature;
+
+
+    }
+
+    private function sign($wxOrder){
+        $jsApiPayData=new \WxPayJsApiPay();
+
+        $jsApiPayData->SetAppid(config(wx.appid));
+
+        $jsApiPayData->SetTimeStamp((string)time());
+
+        $rand=md5(time().mt_rand(0,1000));
+
+        $jsApiPayData->SetNonceStr($rand);
+
+        $jsApiPayData->SetPackage('prepay_id='.$wxOrder['prepay_id']);
+
+        $jsApiPayData->SetSignType('MD5');
+
+        $sign=$jsApiPayData->MakeSign();
+
+        $rawValues=$jsApiPayData->GetValues();
+
+        $rawValues['paySign']=$sign;
+
+        unset($rawValues['appId']);
+
+        return $rawValues;
 
     }
 

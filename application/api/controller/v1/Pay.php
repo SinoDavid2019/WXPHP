@@ -23,7 +23,7 @@ class Pay extends BaseController
         (new IDMustBePositiveInt())->goCheck();
 
         $pay=new PayService($id);
-        $pay->pay();
+        return $pay->pay();
 
 
 
