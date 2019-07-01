@@ -32,8 +32,8 @@ class Theme
 
     public function getComplexOne($id){
         (new IDMustBePositiveInt())->goCheck();
-        $result=ThemeModel::with('headImg,topicImg,products')->select($id);
-        if($result->isEmpty()){
+        $result=ThemeModel::with('headImg,topicImg,products')->find($id);
+        if(empty($result)){
             throw new ThemeException();
         }
         return $result;
