@@ -30,9 +30,9 @@ class Banner
     public function  getBanner($id){
 
        (new IDMustBePositiveInt())->goCheck();
-       $banner=BannerModel::with(['items','items.img'])->select($id);
+       $banner=BannerModel::with(['items','items.img'])->find($id);
        //$banner=BannerModel::getBannerByID($id);
-        if($banner->isEmpty()){
+        if(empty($banner)){
             throw new BannerMissException();
         }
         return $banner;
