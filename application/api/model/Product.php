@@ -46,7 +46,7 @@ class Product extends BaseModel
 
                 $query->with('imgUrl')->order('order','asc');
             }
-        ])->with('properties')->where('id','=',$id)->select();
+        ])->with('properties')->where('id','=',$id)->find();
        // $product=self::with(['images.imgUrl','properties'])->where('id','=',$id)->select();
         return $product;
     }

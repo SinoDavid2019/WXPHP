@@ -57,7 +57,7 @@ class Product
         (new IDMustBePositiveInt())->goCheck();
 
         $product=ProductModel::getProductDetail($id);
-        if($product->isEmpty()){
+        if(empty($product)){
             throw new ProductException();
         }
 
