@@ -27,6 +27,14 @@ class Token
         return md5($randChars.$timeStamp.$salt);
     }
 
+    public static function verifyToken($token){
+        $exist=Cache::get($token);
+        if(!$exist){
+            return false;
+        }
+        return true;
+    }
+
     public static function getCurrentTokenVar($key){
 
         $token=Request::instance()->header('token');

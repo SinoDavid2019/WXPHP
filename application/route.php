@@ -32,8 +32,11 @@ Route::group('api/:version/product',function (){
 Route::get('api/:version/category/all','api/:version.category/getAllCategories');
 
 Route::post('api/:version/token/user','api/:version.token/getToken');
+Route::post('api/:version/token/verify','api/:version.Token/verifyToken');
 
 Route::post('api/:version/address','api/:version.Address/createOrUpdateAddress');
+Route::get('api/:version/address','api/:version.Address/getAddressInfo');
+
 
 Route::post('api/:version/order','api/:version.Order/placeOrder');
 Route::get('api/:version/order/by_user','api/:version.Order/getSummaryByUser');
